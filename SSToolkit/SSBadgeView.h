@@ -100,6 +100,11 @@ typedef enum {
  */
 @property (nonatomic, assign, getter=isHighlighted) BOOL highlighted;
 
+/**
+ The badge's minimum possible width. Default is 30.0f.
+ */
+@property (nonatomic, assign) CGFloat minimumWidth;
+
 
 ///---------------------
 /// @name Drawing Images

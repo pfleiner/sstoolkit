@@ -27,6 +27,7 @@
 @synthesize cornerRadius = _cornerRadius;
 @synthesize badgeAlignment = _badgeAlignment;
 @synthesize highlighted = _highlighted;
+@synthesize minimumWidth = _minimumWidth;
 
 - (void)setBadgeColor:(UIColor *)badgeColor {
 	_badgeColor = badgeColor;
@@ -68,6 +69,11 @@
 	_highlighted = highlighted;
 	_textLabel.highlighted = highlighted;
 	[self setNeedsDisplay];
+}
+
+- (void)setMinimumWidth:(CGFloat)minimumWidth {
+    _minimumWidth = minimumWidth;
+    [self setNeedsDisplay];
 }
 
 
@@ -142,7 +148,7 @@
 
 - (CGSize)sizeThatFits:(CGSize)size {
 	CGSize textSize = [_textLabel sizeThatFits:self.bounds.size];
-	return CGSizeMake(fmaxf(textSize.width + 12.0f, 30.0f), textSize.height + 8.0f);
+	return CGSizeMake(fmaxf(textSize.width + 12.0f, _minimumWidth), textSize.height + 8.0f);
 }
 
 
@@ -180,6 +186,7 @@
 	self.cornerRadius = 10.0f;
 	self.badgeAlignment = SSBadgeViewAlignmentCenter;
 	self.highlighted = NO;
+    self.minimumWidth = 30.0f;
 }
 
 
